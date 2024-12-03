@@ -1,0 +1,38 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+      <!--<style>body {
+        background-image: url("https://th.bing.com/th/id/R.e65fe1bf7248a4181c022f54ea60e75d?rik=25dPfbSKadg9tw&riu=http%3a%2f%2fsimplyknowledge.com%2fuploads%2fpage%2fheadimg_url%2f215%2fLogo.png&ehk=traV7Mmb85ZyDqBevbWBDQSvjKsvX4n%2bnHQiB9Yn7cY%3d&risl=&pid=ImgRaw&r=0");
+        background-repeat: repeat;
+        background-attachment: fixed;
+        left: 50%;
+        opacity: 1;
+      background-size: 100% 100%;
+      }</style>-->
+      <form class="form-signin" method="POST" action="/login">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.username) }}
+        {{ wtf.form_field(form.password) }}
+        {{ wtf.form_field(form.remember) }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        
+      </form>
+      <form class="form-signin"  method="POST" action="/signup">
+        <h5>Dont have any account? Register here</h5>
+         <button class="btn btn-lg btn-primary btn-block" type="submit">Back to Register</button>
+      </form>
+
+    </div> <!-- /container -->
+{% endblock %}
